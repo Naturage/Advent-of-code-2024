@@ -18,11 +18,11 @@ input <- get_input(day)
 # Pt2
 
 parsed_with_dos <- input %>% 
-  str_extract_all("mul\\(\\d+,\\d+\\)|don't|do") %>%
+  str_extract_all("mul\\(\\d+,\\d+\\)|don't\\(\\)|do\\(\\)") %>%
   unlist
 
-only_do_dont <- case_when(parsed_with_dos == "do" ~ 1,
-                          parsed_with_dos == "don't" ~ 0,
+only_do_dont <- case_when(parsed_with_dos == "do()" ~ 1,
+                          parsed_with_dos == "don't()" ~ 0,
                           TRUE ~ NA)
 
 only_do_dont[1] <- coalesce(only_do_dont[1],1)
