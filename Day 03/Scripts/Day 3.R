@@ -25,10 +25,9 @@ only_do_dont <- case_when(parsed_with_dos == "do" ~ 1,
                           parsed_with_dos == "don't" ~ 0,
                           TRUE ~ NA)
 
-last_seen <- 1
-for (pos in 1:length(only_do_dont)){
-  only_do_dont[pos] <- coalesce(only_do_dont[pos],last_seen)
-  last_seen <- only_do_dont[pos]
+only_do_dont[1] <- coalesce(only_do_dont[1],1)
+for (pos in 2:length(only_do_dont)){
+  only_do_dont[pos] <- coalesce(only_do_dont[pos],only_do_dont[pos-1])
 }
 
 (ans_2 <- parsed_with_dos %>% 
