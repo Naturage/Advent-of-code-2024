@@ -17,8 +17,6 @@ input_cleaner <- input %>%
         .,
         matrix(rep(".", ncol(.) * 3), nrow = 3))
 
-starting_pts <- which(input_cleaner != ".", arr.ind = T)
-
 # Pt1
 
 check_if_xmas <- function(x, y, dir_x, dir_y, grid = input_cleaner){
@@ -38,6 +36,8 @@ check_all_xmas <- function(x,y){
       check_if_xmas(x,y,-1, 1),
       check_if_xmas(x,y,-1,-1))
 }
+
+starting_pts <- which(input_cleaner == "X", arr.ind = T)
 
 (ans_1 <- mapply(check_all_xmas,
                 x = starting_pts[,1],
@@ -63,6 +63,8 @@ check_all_crossmas <- function(x,y){
       check_if_crossmas(x,y,-1, 1),
       check_if_crossmas(x,y,-1,-1))
 }
+
+starting_pts <- which(input_cleaner == "A", arr.ind = T)
 
 (ans_2 <- mapply(check_all_crossmas,
                  x = starting_pts[,1],
