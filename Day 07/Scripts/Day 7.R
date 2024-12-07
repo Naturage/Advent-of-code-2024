@@ -9,8 +9,6 @@ input_clean <- input %>% str_split("(:)? ") %>% lapply(as.numeric)
 tests <- sapply(input_clean, \(x){x[1]})
 equations <- lapply(input_clean, \(x){x[-1]})
 
-# Pt1
-
 can_be_obtained <- function(result, inputs, part){
   
   # various terminating conditions
@@ -33,6 +31,7 @@ can_be_obtained <- function(result, inputs, part){
   
 }
 
+# Pt1
 (ans_1 <- (tests * 
     mapply(can_be_obtained,
            result = tests,
