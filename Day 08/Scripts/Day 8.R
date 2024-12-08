@@ -33,7 +33,7 @@ resonant_locs <- resonant_pairs %>%
   filter((anti_x %in% 1:size) & (anti_y %in% 1:size))
 
 (ans_1 <- resonant_locs %>%
-    # numbers - 0 and 1 are the source antennas, P1 resonant is 1 off
+    # numbers - 0 and -1 return the source antennas, P1 resonant is 1 off them
     filter(resonants %in% c(-2,1)) %>%
     distinct(anti_x,anti_y) %>%
     nrow)
